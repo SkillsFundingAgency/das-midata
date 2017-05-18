@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="SFA.DAS.MI.Api.CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="SFA.DAS.MI.Api">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="LogLevel" value="Info" />
+      <Setting name="idaAudience" value="" />
+      <Setting name="idaTenant" value="" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Certificate1" thumbprint="5CAEC03A02C9191059F0C18F4983F7F5A3EA7808" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

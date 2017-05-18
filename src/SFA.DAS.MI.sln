@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CF30368C-0F05-40DB-B809-6170079F312C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.Api.Tests", "SFA.DAS.MI.Api.Tests\SFA.DAS.MI.Api.Tests.csproj", "{C6D982D1-CFB3-4808-9F1E-215F28216639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.Infrastructure", "SFA.DAS.MI.Infrastructure\SFA.DAS.MI.Infrastructure.csproj", "{5BC9C264-D982-40FB-A558-34A9CDA7AAE9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SFA.DAS.MI.Database", "SFA.DAS.MI.Database\SFA.DAS.MI.Database.sqlproj", "{FB616FF9-C4EB-47A8-854A-F5453015A521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.Api", "SFA.DAS.MI.Api\SFA.DAS.MI.Api.csproj", "{C214A1CC-5498-4EBE-808E-081F9C60B3B1}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SFA.DAS.MI.Api.CloudService", "SFA.DAS.MI.Api.CloudService\SFA.DAS.MI.Api.CloudService.ccproj", "{441A66DF-A924-4445-9D83-BEC7C5762A77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6D982D1-CFB3-4808-9F1E-215F28216639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D982D1-CFB3-4808-9F1E-215F28216639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D982D1-CFB3-4808-9F1E-215F28216639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D982D1-CFB3-4808-9F1E-215F28216639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC9C264-D982-40FB-A558-34A9CDA7AAE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC9C264-D982-40FB-A558-34A9CDA7AAE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC9C264-D982-40FB-A558-34A9CDA7AAE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC9C264-D982-40FB-A558-34A9CDA7AAE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB616FF9-C4EB-47A8-854A-F5453015A521}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C214A1CC-5498-4EBE-808E-081F9C60B3B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C214A1CC-5498-4EBE-808E-081F9C60B3B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C214A1CC-5498-4EBE-808E-081F9C60B3B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C214A1CC-5498-4EBE-808E-081F9C60B3B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{441A66DF-A924-4445-9D83-BEC7C5762A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441A66DF-A924-4445-9D83-BEC7C5762A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441A66DF-A924-4445-9D83-BEC7C5762A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441A66DF-A924-4445-9D83-BEC7C5762A77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6D982D1-CFB3-4808-9F1E-215F28216639} = {CF30368C-0F05-40DB-B809-6170079F312C}
+	EndGlobalSection
+EndGlobal

@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="InvalidRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\GetDeclarations\GetDeclarationsQueryHandler.cs" />
+    <Compile Include="Queries\GetDeclarations\GetDeclarationsRequest.cs" />
+    <Compile Include="Queries\GetDeclarations\GetDeclarationsResponse.cs" />
     <Compile Include="Queries\GetDeclarations\GetDeclarationsValidator.cs" />
     <Compile Include="Queries\GetFractions\GetFractionsQueryHandler.cs" />
     <Compile Include="Queries\GetFractions\GetFractionsRequest.cs" />

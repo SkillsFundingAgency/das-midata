@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\GetDeclarationsTests\WhenIGetDeclarations.cs" />
     <Compile Include="Queries\GetDeclarationsTests\WhenIValidateTheRequest.cs" />
     <Compile Include="Queries\GetFractionsTests\WhenIGetFractions.cs" />
     <Compile Include="Queries\GetFractionsTests\WhenIValidateTheRequest.cs" />

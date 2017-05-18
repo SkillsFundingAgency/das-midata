@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
@@ -33,10 +34,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
         [Test]
         public override async Task ThenIfTheMessageIsValidTheRepositoryIsCalled()
         {
-            //Arrange
             
-            RequestValidator.Setup(x => x.ValidateAsync(It.Is<GetFractionsRequest>(c => c.EmpRef.Equals(ExpectedEmpref)))).ReturnsAsync(new ValidationResult {ValidationDictionary = new Dictionary<string, string>()});
-
             //Act
             await RequestHandler.Handle(Query);
 
@@ -52,7 +50,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
 
             //Assert
             Assert.IsAssignableFrom<GetFractionsResponse>(actual);
-            Assert.IsNotEmpty(actual.Fractions.FractionCalculations);
+            Assert.IsTrue(actual.Fractions.FractionCalculations.Any());
             Assert.AreEqual(actual.Fractions.Empref, ExpectedEmpref);
         }
     }

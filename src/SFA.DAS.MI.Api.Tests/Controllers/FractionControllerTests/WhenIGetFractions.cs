@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 using MediatR;
@@ -6,6 +7,7 @@ using Moq;
 using NLog;
 using NUnit.Framework;
 using SFA.DAS.MI.Api.Controllers;
+using SFA.DAS.MI.Application;
 using SFA.DAS.MI.Application.Queries.GetFractions;
 using SFA.DAS.MI.Domain.Models.Fractions;
 
@@ -70,6 +72,35 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
 
             //Assert
             _mediator.Verify(x => x.SendAsync(It.Is<GetFractionsRequest>(c => c.EmpRef.Equals(ExpectedEmpRef))), Times.Once);
+        }
+
+        [Test]
+        public async Task ThenWhenAnInvalidRequestExceptionIsThrownABadRequestResponseIsReturned()
+        {
+            //Arrange
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetFractionsRequest>()))
+                .ThrowsAsync(new InvalidRequestException(new Dictionary<string, string>()));
+
+            //Act
+            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef);
+
+            //Act
+            Assert.IsAssignableFrom<BadRequestErrorMessageResult>(actual);
+            _logger.Verify(x => x.Info(It.IsAny<InvalidRequestException>()));
+        }
+
+        [Test]
+        public async Task ThenWhenAnExceptionIsThrownAServerErrorIsReturned()
+        {
+            //Arrange
+            _mediator.Setup(x => x.SendAsync(It.IsAny<GetFractionsRequest>())).ThrowsAsync(new Exception());
+
+            //Act
+            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef);
+
+            //Act
+            Assert.IsAssignableFrom<InternalServerErrorResult>(actual);
+            _logger.Verify(x => x.Error(It.IsAny<Exception>()));
         }
     }
 }

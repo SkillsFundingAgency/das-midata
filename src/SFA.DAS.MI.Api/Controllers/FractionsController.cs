@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using MediatR;
 using NLog;
 using SFA.DAS.MI.Api.Attributes;
+using SFA.DAS.MI.Application;
 using SFA.DAS.MI.Application.Queries.GetFractions;
 
 namespace SFA.DAS.MI.Api.Controllers
@@ -28,15 +30,28 @@ namespace SFA.DAS.MI.Api.Controllers
             var decodedEmpref = HttpUtility.UrlDecode(empRef);
 
             _logger.Info($"Fractions API called for {decodedEmpref}");
-
-            var result = await _mediator.SendAsync(new GetFractionsRequest {EmpRef = decodedEmpref});
-
-            if (result?.Fractions?.FractionCalculations == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await _mediator.SendAsync(new GetFractionsRequest {EmpRef = decodedEmpref});
 
-            return Ok(result.Fractions);
+                if (result?.Fractions?.FractionCalculations == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result.Fractions);
+            }
+            catch (InvalidRequestException ex)
+            {
+                _logger.Info(ex);
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                return InternalServerError();
+            }
+            
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using MediatR;
 using NLog;
 using SFA.DAS.MI.Api.Attributes;
+using SFA.DAS.MI.Application;
 using SFA.DAS.MI.Application.Queries.GetDeclarations;
 
 namespace SFA.DAS.MI.Api.Controllers
@@ -30,15 +32,29 @@ namespace SFA.DAS.MI.Api.Controllers
 
             _logger.Info($"Declarations API called for {decodedEmpref}");
 
-            var result = await _mediator.SendAsync(new GetDeclarationsRequest {EmpRef = decodedEmpref});
-
-            if (result?.Declarations?.Declarations == null)
+            try
             {
-                _logger.Info($"No declarations found for {empRef}");
-                return NotFound();
+                var result = await _mediator.SendAsync(new GetDeclarationsRequest {EmpRef = decodedEmpref});
+
+                if (result?.Declarations?.Declarations == null)
+                {
+                    _logger.Info($"No declarations found for {empRef}");
+                    return NotFound();
+                }
+
+                return Ok(result.Declarations);
+            }
+            catch (InvalidRequestException ex)
+            {
+                _logger.Info(ex);
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                return InternalServerError();
             }
             
-            return Ok(result.Declarations);
         }
     }
 }

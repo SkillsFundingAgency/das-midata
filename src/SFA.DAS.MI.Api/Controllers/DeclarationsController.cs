@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using MediatR;
+using NLog;
 using SFA.DAS.MI.Api.Attributes;
 
 namespace SFA.DAS.MI.Api.Controllers
@@ -12,9 +14,11 @@ namespace SFA.DAS.MI.Api.Controllers
     [RoutePrefix("apprenticeship-levy/epaye/{empRef}/declarations")]
     public class DeclarationsController : ApiController
     {
-        public DeclarationsController()
+        private readonly ILogger _logger;
+
+        public DeclarationsController(ILogger logger, IMediator mediator)
         {
-            
+            _logger = logger;
         }
 
 
@@ -23,6 +27,7 @@ namespace SFA.DAS.MI.Api.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetDeclarations(string empRef)
         {
+            _logger.Info($"Declarations API called for {empRef}");
             return Ok();
         }
     }

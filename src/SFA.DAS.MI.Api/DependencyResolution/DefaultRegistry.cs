@@ -15,6 +15,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using MediatR;
 using StructureMap;
 
 namespace SFA.DAS.MI.Api.DependencyResolution {
@@ -22,17 +23,23 @@ namespace SFA.DAS.MI.Api.DependencyResolution {
     using StructureMap.Graph;
 	
     public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
+        private const string ServiceNamespace = "SFA.DAS";
 
         public DefaultRegistry() {
             Scan(
                 scan => {
-                    scan.TheCallingAssembly();
-                    scan.WithDefaultConventions();
+                    scan.AssembliesFromApplicationBaseDirectory(a => a.GetName().Name.StartsWith(ServiceNamespace));
+                    scan.RegisterConcreteTypesAgainstTheFirstInterface();
                 });
-            //For<IExample>().Use<Example>();
+            RegisterMediator();
         }
 
-        #endregion
+        private void RegisterMediator()
+        {
+            For<SingleInstanceFactory>().Use<SingleInstanceFactory>(ctx => t => ctx.GetInstance(t));
+            For<MultiInstanceFactory>().Use<MultiInstanceFactory>(ctx => t => ctx.GetAllInstances(t));
+            For<IMediator>().Use<Mediator>();
+        }
+
     }
 }

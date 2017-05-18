@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SFA.DAS.MI.Application.Validation;
 
 namespace SFA.DAS.MI.Application.Queries.GetFractions
@@ -11,7 +7,14 @@ namespace SFA.DAS.MI.Application.Queries.GetFractions
     {
         public Task<ValidationResult> ValidateAsync(GetFractionsRequest item)
         {
-            throw new NotImplementedException();
+            var validationResult = new ValidationResult();
+
+            if (string.IsNullOrEmpty(item.EmpRef))
+            {
+                validationResult.AddError(nameof(item.EmpRef));
+            }
+
+            return Task.FromResult(validationResult);
         }
     }
 }

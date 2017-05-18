@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SFA.DAS.MI.Domain.Models.Declarations;
 
-namespace SFA.DAS.MI.Domain.Data
+namespace SFA.DAS.MI.Domain.Data.Repositories
 {
     public interface IDeclarationsRepository
     {

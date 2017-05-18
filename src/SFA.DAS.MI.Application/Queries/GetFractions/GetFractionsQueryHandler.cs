@@ -2,6 +2,7 @@
 using MediatR;
 using SFA.DAS.MI.Application.Validation;
 using SFA.DAS.MI.Domain.Data;
+using SFA.DAS.MI.Domain.Data.Repositories;
 using SFA.DAS.MI.Domain.Models.Fractions;
 
 namespace SFA.DAS.MI.Application.Queries.GetFractions

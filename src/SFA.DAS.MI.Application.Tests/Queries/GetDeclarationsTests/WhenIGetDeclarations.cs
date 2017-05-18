@@ -7,6 +7,7 @@ using NUnit.Framework;
 using SFA.DAS.MI.Application.Queries.GetDeclarations;
 using SFA.DAS.MI.Application.Validation;
 using SFA.DAS.MI.Domain.Data;
+using SFA.DAS.MI.Domain.Data.Repositories;
 using SFA.DAS.MI.Domain.Models.Declarations;
 
 namespace SFA.DAS.MI.Application.Tests.Queries.GetDeclarationsTests

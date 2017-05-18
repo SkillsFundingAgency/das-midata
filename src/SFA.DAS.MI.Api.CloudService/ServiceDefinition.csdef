@@ -14,6 +14,8 @@
       <Setting name="LogLevel" />
       <Setting name="idaAudience" />
       <Setting name="idaTenant" />
+      <Setting name="ConfigurationStorageConnectionString" />
+      <Setting name="EnvironmentName" />
     </ConfigurationSettings>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />

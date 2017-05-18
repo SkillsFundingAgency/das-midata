@@ -5,8 +5,10 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="LogLevel" value="Info" />
-      <Setting name="idaAudience" value="" />
-      <Setting name="idaTenant" value="" />
+      <Setting name="idaAudience" value="https://citizenazuresfabisgov.onmicrosoft.com/eas-miapi" />
+      <Setting name="idaTenant" value="citizenazuresfabisgov.onmicrosoft.com" />
+      <Setting name="ConfigurationStorageConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="EnvironmentName" value="LOCAL" />
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="Certificate1" thumbprint="5CAEC03A02C9191059F0C18F4983F7F5A3EA7808" thumbprintAlgorithm="sha1" />

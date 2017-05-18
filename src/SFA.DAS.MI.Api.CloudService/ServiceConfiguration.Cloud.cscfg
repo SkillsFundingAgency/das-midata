@@ -9,7 +9,7 @@
       <Setting name="idaTenant" value="" />
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="Certificate1" thumbprint="" thumbprintAlgorithm="sha1" />
+      <Certificate name="Certificate1" thumbprint="5CAEC03A02C9191059F0C18F4983F7F5A3EA7808" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
 </ServiceConfiguration>

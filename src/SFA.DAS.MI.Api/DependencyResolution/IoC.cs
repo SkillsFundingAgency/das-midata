@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using SFA.DAS.MI.Domain.Configuration;
 using SFA.DAS.MI.Infrastructure.DependencyResolution;
 
 namespace SFA.DAS.MI.Api.DependencyResolution {
@@ -28,6 +29,7 @@ namespace SFA.DAS.MI.Api.DependencyResolution {
                 {
                     c.AddRegistry<DefaultRegistry>();
                     c.Policies.Add<LoggingPolicy>();
+                    c.Policies.Add(new ConfigurationPolicy<MiApiConfiguration>("SFA.DAS.MI.API"));
                 }
             );
         }

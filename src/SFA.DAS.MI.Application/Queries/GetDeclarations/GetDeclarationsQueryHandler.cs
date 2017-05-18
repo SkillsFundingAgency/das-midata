@@ -10,12 +10,12 @@ namespace SFA.DAS.MI.Application.Queries.GetDeclarations
     public class GetDeclarationsQueryHandler : IAsyncRequestHandler<GetDeclarationsRequest, GetDeclarationsResponse>
     {
         private readonly IValidator<GetDeclarationsRequest> _validator;
-        private readonly IDeclarationsRepository _declarationsRepository;
+        private readonly IDeclarationRepository _declarationRepository;
 
-        public GetDeclarationsQueryHandler(IValidator<GetDeclarationsRequest> validator, IDeclarationsRepository declarationsRepository)
+        public GetDeclarationsQueryHandler(IValidator<GetDeclarationsRequest> validator, IDeclarationRepository declarationRepository)
         {
             _validator = validator;
-            _declarationsRepository = declarationsRepository;
+            _declarationRepository = declarationRepository;
         }
 
         public async Task<GetDeclarationsResponse> Handle(GetDeclarationsRequest message)
@@ -27,7 +27,7 @@ namespace SFA.DAS.MI.Application.Queries.GetDeclarations
                 throw new InvalidRequestException(validationResult.ValidationDictionary);
             }
 
-            var result = await _declarationsRepository.GetDeclarationsByEmpref(message.EmpRef);
+            var result = await _declarationRepository.GetDeclarationsByEmpref(message.EmpRef);
 
 
             return new GetDeclarationsResponse {Declarations = new LevyDeclarations {EmpRef = message.EmpRef, Declarations = result} };

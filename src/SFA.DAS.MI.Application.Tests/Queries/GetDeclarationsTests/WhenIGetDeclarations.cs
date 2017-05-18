@@ -14,7 +14,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetDeclarationsTests
 {
     public class WhenIGetDeclarations : QueryBaseTest<GetDeclarationsQueryHandler,GetDeclarationsRequest,GetDeclarationsResponse>
     {
-        private Mock<IDeclarationsRepository> _repository;
+        private Mock<IDeclarationRepository> _repository;
         public override GetDeclarationsRequest Query { get; set; }
         public override GetDeclarationsQueryHandler RequestHandler { get; set; }
         public override Mock<IValidator<GetDeclarationsRequest>> RequestValidator { get; set; }
@@ -28,7 +28,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetDeclarationsTests
 
             Query = new GetDeclarationsRequest {EmpRef = ExpectedEmpRef};
 
-            _repository = new Mock<IDeclarationsRepository>();
+            _repository = new Mock<IDeclarationRepository>();
             _repository.Setup(x => x.GetDeclarationsByEmpref(ExpectedEmpRef)).ReturnsAsync(new List<Declaration> {new Declaration()});
 
             RequestHandler = new GetDeclarationsQueryHandler(RequestValidator.Object, _repository.Object);

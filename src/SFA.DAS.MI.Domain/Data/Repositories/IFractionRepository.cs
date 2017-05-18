@@ -4,7 +4,7 @@ using SFA.DAS.MI.Domain.Models.Fractions;
 
 namespace SFA.DAS.MI.Domain.Data.Repositories
 {
-    public interface IFractionsRepository
+    public interface IFractionRepository
     {
         Task<List<FractionCalculation>> GetFractionsByEmpref(string empRef);
     }

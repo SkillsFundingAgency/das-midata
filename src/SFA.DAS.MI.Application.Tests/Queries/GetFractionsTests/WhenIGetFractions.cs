@@ -13,7 +13,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
 {
     public class WhenIGetFractions : QueryBaseTest<GetFractionsQueryHandler,GetFractionsRequest,GetFractionsResponse>
     {
-        private Mock<IFractionsRepository> _repository;
+        private Mock<IFractionRepository> _repository;
         public override GetFractionsRequest Query { get; set; }
         public override GetFractionsQueryHandler RequestHandler { get; set; }
         public override Mock<IValidator<GetFractionsRequest>> RequestValidator { get; set; }
@@ -26,7 +26,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
 
             Query = new GetFractionsRequest {EmpRef = ExpectedEmpref};
 
-            _repository = new Mock<IFractionsRepository>();
+            _repository = new Mock<IFractionRepository>();
             _repository.Setup(x => x.GetFractionsByEmpref(ExpectedEmpref)).ReturnsAsync(new List<FractionCalculation> {new FractionCalculation {}});
 
             RequestHandler = new GetFractionsQueryHandler(RequestValidator.Object, _repository.Object);

@@ -10,12 +10,12 @@ namespace SFA.DAS.MI.Application.Queries.GetFractions
     public class GetFractionsQueryHandler : IAsyncRequestHandler<GetFractionsRequest, GetFractionsResponse>
     {
         private readonly IValidator<GetFractionsRequest> _validator;
-        private readonly IFractionsRepository _fractionsRepository;
+        private readonly IFractionRepository _fractionRepository;
 
-        public GetFractionsQueryHandler(IValidator<GetFractionsRequest> validator, IFractionsRepository fractionsRepository)
+        public GetFractionsQueryHandler(IValidator<GetFractionsRequest> validator, IFractionRepository fractionRepository)
         {
             _validator = validator;
-            _fractionsRepository = fractionsRepository;
+            _fractionRepository = fractionRepository;
         }
 
         public async Task<GetFractionsResponse> Handle(GetFractionsRequest message)
@@ -27,7 +27,7 @@ namespace SFA.DAS.MI.Application.Queries.GetFractions
                 throw new InvalidRequestException(validationResult.ValidationDictionary);
             }
 
-            var result = await _fractionsRepository.GetFractionsByEmpref(message.EmpRef);
+            var result = await _fractionRepository.GetFractionsByEmpref(message.EmpRef);
 
             return new GetFractionsResponse {Fractions = new EnglishFractionDeclarations {Empref = message.EmpRef,FractionCalculations = result} };
         }

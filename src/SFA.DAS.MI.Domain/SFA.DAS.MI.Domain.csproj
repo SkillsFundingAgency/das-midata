@@ -76,6 +76,8 @@
     <Compile Include="Data\Repositories\BaseRepository.cs" />
     <Compile Include="Data\Repositories\IDeclarationRepository.cs" />
     <Compile Include="Data\Repositories\IFractionRepository.cs" />
+    <Compile Include="Entities\Declaration.cs" />
+    <Compile Include="Entities\Fraction.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Models\Declarations\Declaration.cs" />
     <Compile Include="Models\Declarations\LevyDeclarations.cs" />

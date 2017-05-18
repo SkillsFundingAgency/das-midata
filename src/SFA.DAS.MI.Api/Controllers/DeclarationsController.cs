@@ -34,6 +34,7 @@ namespace SFA.DAS.MI.Api.Controllers
 
             if (result?.Declarations?.Declarations == null)
             {
+                _logger.Info($"No declarations found for {empRef}");
                 return NotFound();
             }
             

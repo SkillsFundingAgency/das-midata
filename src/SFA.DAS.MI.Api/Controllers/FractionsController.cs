@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
+using MediatR;
 using NLog;
 using SFA.DAS.MI.Api.Attributes;
+using SFA.DAS.MI.Application.Queries.GetFractions;
 
 namespace SFA.DAS.MI.Api.Controllers
 {
@@ -14,10 +12,12 @@ namespace SFA.DAS.MI.Api.Controllers
     public class FractionsController : ApiController
     {
         private readonly ILogger _logger;
+        private readonly IMediator _mediator;
 
-        public FractionsController(ILogger logger)
+        public FractionsController(ILogger logger, IMediator mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
 
         [Route("", Name = "GetFractions")]
@@ -25,10 +25,18 @@ namespace SFA.DAS.MI.Api.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetFractions(string empRef)
         {
+            var decodedEmpref = HttpUtility.UrlDecode(empRef);
 
-            _logger.Info($"Fractions API called for {empRef}");
+            _logger.Info($"Fractions API called for {decodedEmpref}");
 
-            return Ok();
+            var result = await _mediator.SendAsync(new GetFractionsRequest {EmpRef = decodedEmpref});
+
+            if (result?.Fractions?.FractionCalculations == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result.Fractions);
         }
     }
 }

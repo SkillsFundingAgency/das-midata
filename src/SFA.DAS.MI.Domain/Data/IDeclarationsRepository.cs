@@ -4,7 +4,7 @@ using SFA.DAS.MI.Domain.Models.Declarations;
 
 namespace SFA.DAS.MI.Domain.Data
 {
-    public interface IDeclarationsRepostiory
+    public interface IDeclarationsRepository
     {
         Task<List<Declaration>> GetDeclarationsByEmpref(string empRef);
     }

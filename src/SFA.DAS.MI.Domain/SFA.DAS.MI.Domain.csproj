@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IDeclarationsRepostiory.cs" />
+    <Compile Include="Data\IDeclarationsRepository.cs" />
     <Compile Include="Data\IFractionsRepository.cs" />
     <Compile Include="Models\Declarations\Declaration.cs" />
     <Compile Include="Models\Declarations\LevyDeclarations.cs" />

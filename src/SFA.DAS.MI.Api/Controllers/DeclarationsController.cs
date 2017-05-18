@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using MediatR;
 using NLog;
 using SFA.DAS.MI.Api.Attributes;
+using SFA.DAS.MI.Application.Queries.GetDeclarations;
 
 namespace SFA.DAS.MI.Api.Controllers
 {
@@ -15,10 +12,12 @@ namespace SFA.DAS.MI.Api.Controllers
     public class DeclarationsController : ApiController
     {
         private readonly ILogger _logger;
+        private readonly IMediator _mediator;
 
         public DeclarationsController(ILogger logger, IMediator mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
 
 
@@ -27,8 +26,18 @@ namespace SFA.DAS.MI.Api.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetDeclarations(string empRef)
         {
-            _logger.Info($"Declarations API called for {empRef}");
-            return Ok();
+            var decodedEmpref = HttpUtility.UrlDecode(empRef);
+
+            _logger.Info($"Declarations API called for {decodedEmpref}");
+
+            var result = await _mediator.SendAsync(new GetDeclarationsRequest {EmpRef = decodedEmpref});
+
+            if (result?.Declarations?.Declarations == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(result.Declarations);
         }
     }
 }

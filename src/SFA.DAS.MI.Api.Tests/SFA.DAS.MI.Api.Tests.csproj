@@ -89,6 +89,10 @@
       <Project>{1AF0E546-B79A-4DAC-8CC6-91EEE6E44C1E}</Project>
       <Name>SFA.DAS.MI.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.MI.Domain\SFA.DAS.MI.Domain.csproj">
+      <Project>{D4E9F237-8CDE-4B52-A1F8-1E9885B4373A}</Project>
+      <Name>SFA.DAS.MI.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

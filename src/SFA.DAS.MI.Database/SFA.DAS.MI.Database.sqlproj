@@ -63,4 +63,10 @@
   <ItemGroup>
     <None Include="Database.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="StoredProcedures\GetDeclarations_ByEmpRef.sql" />
+    <Build Include="Tables\Declaration.sql" />
+    <Build Include="Tables\Fraction.sql" />
+    <Build Include="StoredProcedures\GetFractions_ByEmpRef.sql" />
+  </ItemGroup>
 </Project>

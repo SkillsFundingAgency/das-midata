@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using MediatR;
 using NLog;
@@ -10,7 +9,8 @@ using SFA.DAS.MI.Application.Queries.GetDeclarations;
 
 namespace SFA.DAS.MI.Api.Controllers
 {
-    [RoutePrefix("apprenticeship-levy/epaye/{empRef}/declarations")]
+    
+    [RoutePrefix("apprenticeship-levy/epaye/{empRef1}/{empRef2}/declarations")]
     public class DeclarationsController : ApiController
     {
         private readonly ILogger _logger;
@@ -26,9 +26,9 @@ namespace SFA.DAS.MI.Api.Controllers
         [Route("", Name = "GetDeclarations")]
         [ApiAuthorize(Roles = "ReadLevy")]
         [HttpGet]
-        public async Task<IHttpActionResult> GetDeclarations(string empRef)
+        public async Task<IHttpActionResult> GetDeclarations(string empRef1, string empRef2)
         {
-            var decodedEmpref = HttpUtility.UrlDecode(empRef);
+            var decodedEmpref = $"{empRef1}/{empRef2}";
 
             _logger.Info($"Declarations API called for {decodedEmpref}");
 
@@ -38,7 +38,7 @@ namespace SFA.DAS.MI.Api.Controllers
 
                 if (result?.Declarations?.Declarations == null)
                 {
-                    _logger.Info($"No declarations found for {empRef}");
+                    _logger.Info($"No declarations found for {decodedEmpref}");
                     return NotFound();
                 }
 

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using SFA.DAS.MI.Domain.Data.Repositories;
+using SFA.DAS.MI.Domain.Entities;
 using SFA.DAS.MI.Domain.Interfaces;
-using SFA.DAS.MI.Domain.Models.Fractions;
 
 namespace SFA.DAS.MI.Infrastructure.Data
 {
@@ -15,14 +15,14 @@ namespace SFA.DAS.MI.Infrastructure.Data
         {
         }
 
-        public async Task<List<FractionCalculation>> GetFractionsByEmpref(string empRef)
+        public async Task<List<Fraction>> GetFractionsByEmpref(string empRef)
         {
             var result = await WithConnection(async c =>
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@empRef", empRef, DbType.String);
 
-                return await c.QueryAsync<FractionCalculation>(
+                return await c.QueryAsync<Fraction>(
                     sql: "[GetFractions_ByEmpRef]",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);

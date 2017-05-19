@@ -21,7 +21,8 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
         private Mock<IMediator> _mediator;
 
         private const string ExpectedEmpRef = "123/ABC";
-        private const string ExpectedEncodedEmpRef = "123%2FABC";
+        private const string ExpectedEncodedEmpRef = "123";
+        private const string ExpectedEncodedEmpRef2 = "ABC";
 
         [SetUp]
         public void Arrange()
@@ -46,7 +47,7 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
         public async Task ThenATwoHundredAcceptedResponseIsReturnedWhenThereIsData()
         {
             //Act
-            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef);
+            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef, ExpectedEncodedEmpRef2);
 
             //Assert
             Assert.IsAssignableFrom<OkNegotiatedContentResult<EnglishFractionDeclarations>>(actual);
@@ -58,7 +59,7 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
         public async Task ThenAFourZeroFourErrorIsReturnedWhenNoDataIsFound()
         {
             //Act
-            var actual = await _controller.GetFractions("123%2fRTG");
+            var actual = await _controller.GetFractions("123","RTG");
 
             //Assert
             Assert.IsAssignableFrom<NotFoundResult>(actual);
@@ -68,7 +69,7 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
         public async Task ThenTheEmprefIsDecodedCorrectlyAndTheMediatorCalled()
         {
             //Act
-            await _controller.GetFractions(ExpectedEncodedEmpRef);
+            await _controller.GetFractions(ExpectedEncodedEmpRef, ExpectedEncodedEmpRef2);
 
             //Assert
             _mediator.Verify(x => x.SendAsync(It.Is<GetFractionsRequest>(c => c.EmpRef.Equals(ExpectedEmpRef))), Times.Once);
@@ -82,7 +83,7 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
                 .ThrowsAsync(new InvalidRequestException(new Dictionary<string, string>()));
 
             //Act
-            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef);
+            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef, ExpectedEncodedEmpRef2);
 
             //Act
             Assert.IsAssignableFrom<BadRequestErrorMessageResult>(actual);
@@ -96,7 +97,7 @@ namespace SFA.DAS.MI.Api.Tests.Controllers.FractionControllerTests
             _mediator.Setup(x => x.SendAsync(It.IsAny<GetFractionsRequest>())).ThrowsAsync(new Exception());
 
             //Act
-            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef);
+            var actual = await _controller.GetFractions(ExpectedEncodedEmpRef, ExpectedEncodedEmpRef2);
 
             //Act
             Assert.IsAssignableFrom<InternalServerErrorResult>(actual);

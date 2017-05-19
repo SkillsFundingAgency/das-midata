@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using MediatR;
 using SFA.DAS.MI.Application.Validation;
-using SFA.DAS.MI.Domain.Data;
 using SFA.DAS.MI.Domain.Data.Repositories;
 using SFA.DAS.MI.Domain.Models.Fractions;
 
@@ -29,7 +30,20 @@ namespace SFA.DAS.MI.Application.Queries.GetFractions
 
             var result = await _fractionRepository.GetFractionsByEmpref(message.EmpRef);
 
-            return new GetFractionsResponse {Fractions = new EnglishFractionDeclarations {Empref = message.EmpRef,FractionCalculations = result} };
+            var fractionCalculations = result.Select(fraction => new FractionCalculation
+            {
+                CalculatedAt = fraction.DateCalculated.ToString("YYYY-mm-dd"),
+                Fractions = new List<Fraction>
+                {
+                    new Fraction
+                    {
+                        Region = "England",
+                        Value = fraction.Amount.ToString()
+                    }
+                }
+            }).ToList();
+
+            return new GetFractionsResponse {Fractions = new EnglishFractionDeclarations {Empref = message.EmpRef,FractionCalculations = fractionCalculations } };
         }
     }
 }

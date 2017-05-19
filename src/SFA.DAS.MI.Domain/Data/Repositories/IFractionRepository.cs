@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using SFA.DAS.MI.Domain.Models.Fractions;
+using SFA.DAS.MI.Domain.Entities;
 
 namespace SFA.DAS.MI.Domain.Data.Repositories
 {
     public interface IFractionRepository
     {
-        Task<List<FractionCalculation>> GetFractionsByEmpref(string empRef);
+        Task<List<Fraction>> GetFractionsByEmpref(string empRef);
     }
 }

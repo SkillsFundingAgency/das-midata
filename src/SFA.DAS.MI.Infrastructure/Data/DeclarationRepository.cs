@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using SFA.DAS.MI.Domain.Data.Repositories;
+using SFA.DAS.MI.Domain.Entities;
 using SFA.DAS.MI.Domain.Interfaces;
-using SFA.DAS.MI.Domain.Models.Declarations;
 
 namespace SFA.DAS.MI.Infrastructure.Data
 {

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.MI.Application.Queries.GetDeclarations;
 using SFA.DAS.MI.Application.Validation;
-using SFA.DAS.MI.Domain.Data;
 using SFA.DAS.MI.Domain.Data.Repositories;
-using SFA.DAS.MI.Domain.Models.Declarations;
+using SFA.DAS.MI.Domain.Entities;
 
 namespace SFA.DAS.MI.Application.Tests.Queries.GetDeclarationsTests
 {

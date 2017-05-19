@@ -5,9 +5,9 @@ using Moq;
 using NUnit.Framework;
 using SFA.DAS.MI.Application.Queries.GetFractions;
 using SFA.DAS.MI.Application.Validation;
-using SFA.DAS.MI.Domain.Data;
 using SFA.DAS.MI.Domain.Data.Repositories;
-using SFA.DAS.MI.Domain.Models.Fractions;
+using SFA.DAS.MI.Domain.Entities;
+
 
 namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
 {
@@ -27,7 +27,7 @@ namespace SFA.DAS.MI.Application.Tests.Queries.GetFractionsTests
             Query = new GetFractionsRequest {EmpRef = ExpectedEmpref};
 
             _repository = new Mock<IFractionRepository>();
-            _repository.Setup(x => x.GetFractionsByEmpref(ExpectedEmpref)).ReturnsAsync(new List<FractionCalculation> {new FractionCalculation {}});
+            _repository.Setup(x => x.GetFractionsByEmpref(ExpectedEmpref)).ReturnsAsync(new List<Fraction> {new Fraction { }});
 
             RequestHandler = new GetFractionsQueryHandler(RequestValidator.Object, _repository.Object);
         }

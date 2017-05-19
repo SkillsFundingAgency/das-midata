@@ -32,7 +32,7 @@ namespace SFA.DAS.MI.Application.Queries.GetFractions
 
             var fractionCalculations = result.Select(fraction => new FractionCalculation
             {
-                CalculatedAt = fraction.DateCalculated.ToString("YYYY-mm-dd"),
+                CalculatedAt = fraction.DateCalculated.ToString("yyyy-MM-dd"),
                 Fractions = new List<Fraction>
                 {
                     new Fraction

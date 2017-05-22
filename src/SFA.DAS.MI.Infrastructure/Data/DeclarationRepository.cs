@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +30,27 @@ namespace SFA.DAS.MI.Infrastructure.Data
             });
 
             return result.ToList();
+        }
+
+        public async Task SaveDeclaration(Declaration declaration)
+        {
+            var result = await WithConnection(async c =>
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@EmpRef", declaration.EmpRef);
+                parameters.Add("@PayrollMonth", declaration.PayrollMonth);
+                parameters.Add("@PayrollYear", declaration.PayrollYear);
+                parameters.Add("@SubmissionDate", declaration.SubmissionDate);
+                parameters.Add("@LevyDueYtd", declaration.LevyDueYtd);
+                parameters.Add("@LevyAllowanceForYear", declaration.LevyAllowanceForYear);
+                parameters.Add("@CessationDate", declaration.CeasationDate);
+
+                return await  c.ExecuteAsync(
+                    sql: "[SaveDeclaration]",
+                    param: parameters,
+                    commandType: CommandType.StoredProcedure);
+            });
         }
     }
 }

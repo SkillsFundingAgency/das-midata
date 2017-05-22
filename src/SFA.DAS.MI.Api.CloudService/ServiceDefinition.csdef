@@ -25,4 +25,12 @@
       <Certificate name="Certificate1" storeLocation="LocalMachine" storeName="My" />
     </Certificates>
   </WebRole>
+  <WorkerRole name="SFA.DAS.MI.FileReader" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="LogLevel" />
+      <Setting name="ConfigurationStorageConnectionString" />
+      <Setting name="EnvironmentName" />
+    </ConfigurationSettings>
+  </WorkerRole>
 </ServiceDefinition>

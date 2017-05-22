@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\MiApiConfiguration.cs" />
+    <Compile Include="Configuration\MiFileReaderConfiguration.cs" />
     <Compile Include="Data\Repositories\BaseRepository.cs" />
     <Compile Include="Data\Repositories\IDeclarationRepository.cs" />
     <Compile Include="Data\Repositories\IFractionRepository.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Models\Fractions\EnglishFractionDeclarations.cs" />
     <Compile Include="Models\Fractions\Fraction.cs" />
     <Compile Include="Models\Fractions\FractionCalculation.cs" />
+    <Compile Include="Models\MiData\MiRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

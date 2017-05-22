@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.Application.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.Domain", "SFA.DAS.MI.Domain\SFA.DAS.MI.Domain.csproj", "{D4E9F237-8CDE-4B52-A1F8-1E9885B4373A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.MI.FileReader", "SFA.DAS.MI.FileReader\SFA.DAS.MI.FileReader.csproj", "{3BDA34BA-E575-46A8-9ED7-A58B14FE155D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{D4E9F237-8CDE-4B52-A1F8-1E9885B4373A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E9F237-8CDE-4B52-A1F8-1E9885B4373A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E9F237-8CDE-4B52-A1F8-1E9885B4373A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDA34BA-E575-46A8-9ED7-A58B14FE155D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDA34BA-E575-46A8-9ED7-A58B14FE155D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDA34BA-E575-46A8-9ED7-A58B14FE155D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDA34BA-E575-46A8-9ED7-A58B14FE155D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -68,5 +68,7 @@
     <Build Include="Tables\Declaration.sql" />
     <Build Include="Tables\Fraction.sql" />
     <Build Include="StoredProcedures\GetFractions_ByEmpRef.sql" />
+    <Build Include="StoredProcedures\SaveDeclaration.sql" />
+    <Build Include="StoredProcedures\SaveFraction.sql" />
   </ItemGroup>
 </Project>

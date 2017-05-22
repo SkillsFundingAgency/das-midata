@@ -30,5 +30,22 @@ namespace SFA.DAS.MI.Infrastructure.Data
 
             return result.ToList();
         }
+
+        public async Task SaveFraction(Fraction fraction)
+        {
+            await WithConnection(async c =>
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@EmpRef", fraction.EmpRef);
+                parameters.Add("@Amount", fraction.Amount);
+                parameters.Add("@DateCalculated", fraction.DateCalculated);
+
+                return await c.ExecuteAsync(
+                    sql: "[SaveFraction]",
+                    param: parameters,
+                    commandType: CommandType.StoredProcedure);
+            });
+        }
     }
 }

@@ -45,12 +45,22 @@
       <RoleName>SFA.DAS.MI.Api</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.MI.FileReader\SFA.DAS.MI.FileReader.csproj">
+      <Name>SFA.DAS.MI.FileReader</Name>
+      <Project>{3bda34ba-e575-46a8-9ed7-a58b14fe155d}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>SFA.DAS.MI.FileReader</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SFA.DAS.MI.ApiContent\" />
+    <Folder Include="SFA.DAS.MI.FileReaderContent\" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="SFA.DAS.MI.ApiContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="SFA.DAS.MI.FileReaderContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
